@@ -7,6 +7,34 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @OA\Schema(
+ *     title="User",
+ * required={"name", "email", "password"},
+  * )
+*  
+* @OA\Property(
+* property="name",
+* type="string",
+* description="User name",
+* example="John Conor"
+* )
+* @OA\Property(
+* property="email",
+* type="string",
+* description="Email Address",
+* example="john.conor@terminator.com"
+* )
+
+* @OA\Property(
+* property="password",
+* type="string",
+* description="A very secure password",
+* example="123456"
+* )
+         
+ */
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -42,4 +70,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* Relationship.
+    ** @var string
+    */
+    public function bikes()
+    {
+        return $this->hasMany(App\Bike);
+    }
+
 }

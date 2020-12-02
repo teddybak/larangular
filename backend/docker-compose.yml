@@ -9,6 +9,11 @@ services:
     working_dir: /application
     volumes:
       - .:/application
+
+    environment:
+      - MYSQL_DATABASE=garagedb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Estocolmo1
     ports:
       - "8082:3306"
 

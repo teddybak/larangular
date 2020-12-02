@@ -16,7 +16,7 @@ class Bike extends Model
     use HasFactory;
 
     protected $table = 'bikes';
- 
+
 
     /**
        * @OA\Property(
@@ -81,11 +81,22 @@ class Bike extends Model
 
     public function builder()
     {
-        return $this->belongsTo('App\Builder');
+        return $this->belongsTo(Builder::class);
     }
 
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany(Item::class);
     }
+
+    public function garages() {
+        return $this->belongsToMany(Garage::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ratings() {
+        return $this->hasMany(Rating::class);
+}
 }

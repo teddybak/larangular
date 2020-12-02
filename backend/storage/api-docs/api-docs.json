@@ -5,6 +5,70 @@
         "version": "0.1"
     },
     "paths": {
+        "/api/v1/builders": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Builders"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "summary": "create a builder",
+                "description": "Json format",
+                "operationId": "App\\Http\\Controllers\\API\\BuilderController::store",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "location"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "format": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success: A Newly Created Builder",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/resource.json": {
             "get": {
                 "responses": {
@@ -71,6 +135,29 @@
                 },
                 "type": "object"
             },
+            "Garage": {
+                "title": "Garage",
+                "description": "A simple product model",
+                "required": [
+                    "name",
+                    "custumer_level"
+                ],
+                "properties": {
+                    "name": {
+                        "schema": "Garage",
+                        "description": "Jhonny Garage",
+                        "type": "string",
+                        "example": "Exhaust"
+                    },
+                    "costumer_level": {
+                        "schema": "Garage",
+                        "description": "Whats the garage level",
+                        "type": "integer",
+                        "example": "10"
+                    }
+                },
+                "type": "object"
+            },
             "Item": {
                 "title": "Item",
                 "description": "A simple product model",
@@ -94,6 +181,64 @@
                         "description": "Motorcycle description of modifications",
                         "type": "string",
                         "example": "New exhaust system"
+                    }
+                },
+                "type": "object"
+            },
+            "Rating": {
+                "title": "Rating",
+                "required": [
+                    "bike_id",
+                    "user_id",
+                    "rating"
+                ],
+                "properties": {
+                    "biker_id": {
+                        "schema": "Rating",
+                        "description": "Bike id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "user_id": {
+                        "schema": "Rating",
+                        "description": "User id",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "rating": {
+                        "schema": "Rating",
+                        "description": "Vote by rating",
+                        "type": "integer",
+                        "example": "10"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "User",
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "schema": "User",
+                        "description": "User name",
+                        "type": "string",
+                        "example": "John Conor"
+                    },
+                    "email": {
+                        "schema": "User",
+                        "description": "Email Address",
+                        "type": "string",
+                        "example": "john.conor@terminator.com"
+                    },
+                    "password": {
+                        "schema": "User",
+                        "description": "A very secure password",
+                        "type": "string",
+                        "example": "123456"
                     }
                 },
                 "type": "object"

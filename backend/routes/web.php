@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BandController;
-use App\Http\Controllers\BeerController;
 
 use App\Http\Middleware\CORS;
 
@@ -17,8 +15,8 @@ use App\Http\Middleware\CORS;
 |
 */
 
- 
- 
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +27,6 @@ Route::prefix('api/v1')->group(function () {
 });
 
 
-Route::prefix('api/v1')->group(function () {
-    Route::resource('bands', 'BeerController')->middleware(CORS::class);
-});
+
+    Route::resource('builders', 'BuilderController');
+

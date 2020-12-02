@@ -16,7 +16,6 @@ class Builder extends Model
     use HasFactory;
     protected $table = 'builders';
 
-
     /**
        * @OA\Property(
         * property="name",
@@ -35,9 +34,9 @@ class Builder extends Model
         * example="Xl1200, Shadow ACE, V-Star"
         * )
         */
-    
+
     private $description;
-    
+
     /**
     * @OA\Property(
     * property="location",
@@ -46,7 +45,7 @@ class Builder extends Model
     * example="2009, 2008, 2007"
     * )
     */
-    
+
     private $location;
 
     protected $fillable = [
@@ -62,6 +61,6 @@ class Builder extends Model
     */
     public function bike()
     {
-        return $this->hasOne('App\Bike');
+        return $this->hasOne('App\Models\Bike');
     }
 }

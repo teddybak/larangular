@@ -15,14 +15,14 @@ class Item extends Model
 {
     use HasFactory;
     /**
-        * The table associated with the model.
-        *
-        * @var string
-        */
+    * The table associated with the model.
+    *
+    * @var string
+    */
     protected $table = 'items';
 
     /**
-       * @OA\Property(
+    * @OA\Property(
     * property="type",
     * type="string",
     * description="Company name",
@@ -32,13 +32,13 @@ class Item extends Model
     private $type;
 
     /**
-        * @OA\Property(
-        * property="name",
-        * type="string",
-        * description="Motorcycle model",
-        * example="Xl1200, Shadow ACE, V-Star"
-        * )
-        */
+    * @OA\Property(
+    * property="name",
+    * type="string",
+    * description="Motorcycle model",
+    * example="Xl1200, Shadow ACE, V-Star"
+    * )
+    */
     
     private $name;
     

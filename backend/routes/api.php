@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::apiResources([
+    'bikes' => 'App\Http\Controllers\API\BikeController',
+    'builders' => 'App\Http\Controllers\API\BuilderController',
+    'items' => 'App\Http\Controllers\API\ItemController',
+    'bikes/{bike}/ratings' => 'App\Http\Controllers\API\RatingController'
+]);
